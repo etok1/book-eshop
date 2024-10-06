@@ -1,0 +1,80 @@
+.header {
+  background-color: var(--white-color);
+  top: 0;
+  position: sticky;
+  font-family: "Montserrat", sans-serif;
+  height: 116px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 100;
+}
+
+.header__logo h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: var(--light-black);
+}
+
+.header__navList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
+
+.header__navLink {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--dark-grey);
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.header__navLink:hover {
+  color: var(--light-black);
+}
+
+.header__navLink.active {
+  color: var(--light-black);
+}
+
+.header__menu {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.header__menu button {
+  cursor: pointer;
+}
+
+.header__menuCart {
+  position: relative;
+}
+
+.header__count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--white-color);
+  font-weight: 500;
+  height: 13px;
+  width: 13px;
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  background-color: var(--orange-color);
+  text-align: center;
+  /* padding: 3px; */
+  border-radius: 50%;
+}
+
+.header__userLogin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,62 @@
+.container {
+  margin-top: 35px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.container h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.wrapper,
+.username {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.userForm label {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.userForm input {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.userForm button {
+  margin-top: 35px;
+  width: 60%;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+
+  width: 353px;
+  height: 345px;
+  background-color: var(--light-color);
+}
+
+.about h3 {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.about p {
+  margin-top: 25px;
+  line-height: 1.4;
+  font-size: 12px;
+  color: var(--dark-grey);
+  font-weight: 600;
+}

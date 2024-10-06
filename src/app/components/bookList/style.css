@@ -1,0 +1,104 @@
+.main__books {
+  margin-top: 150px;
+  display: flex;
+}
+
+.main__books-sorting {
+  height: 710px;
+  width: 416px;
+  background-color: var(--light-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main__books-sorting ul {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.main__books-genre.active {
+  list-style: circle;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--light-black);
+}
+
+.main__books-genre {
+  color: var(--dark-grey);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+.main__books-genre:hover {
+  list-style: circle;
+  font-weight: bold;
+  color: var(--light-black);
+}
+
+.main__books-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 45px;
+}
+
+.main__books-option {
+  width: 424px;
+  height: 300px;
+  display: flex;
+  margin-left: -15%;
+  gap: 25px;
+}
+
+.main__books-cover {
+  width: 212px;
+  height: 300px;
+}
+
+.main__books-book {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.main__books-book p {
+  font-size: 10px;
+  color: var(--dark-grey);
+}
+
+.main__books-book h1 {
+  font-size: 16px;
+  color: var(--light-black);
+  font-weight: bold;
+}
+
+.main__books-review {
+  display: flex;
+  align-items: center;
+}
+
+.main__books-review p {
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.main__books-annotation {
+  height: 38px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  line-height: 13px;
+}
+
+.main__books-price {
+  font-size: 13px !important;
+  color: var(--light-black) !important;
+  font-weight: bold;
+}

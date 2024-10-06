@@ -1,0 +1,55 @@
+.title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.author {
+  font-size: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review {
+  display: flex;
+  align-items: center;
+
+  gap: 1px;
+}
+
+.review p {
+  font-size: 10px;
+}
+
+.countBtn {
+  padding: 5px 25px;
+  border: 1px solid #eeedf5;
+  max-width: 176px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  color: var(--dark-grey);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.countBtn span {
+  cursor: pointer;
+}
+
+.delivery {
+  color: var(--dark-grey);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 18px;
+}
