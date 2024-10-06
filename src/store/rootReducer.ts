@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import cartSlice from "../slices/cartSlice"; // Пример слайса для корзины
-import filterSlice from "../slices/filterSlice"; // Пример слайса для фильтров
-// import userSlice from "../slices/userSlice"; // Пример слайса для пользователя
+import cartSlice from "../slices/cartSlice"; 
+import filterSlice from "../slices/filterSlice"; 
+// import userSlice from "../slices/userSlice"; 
 
 const rootReducer = combineReducers({
   cart: cartSlice,
