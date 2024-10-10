@@ -18,17 +18,31 @@ export default function Item({ book }) {
   return (
     <tr>
       <td style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-        <Image src={book.image} alt="" width={102} height={145} />
-        <div className={style.item}>
-          <h2 className={style.title}>{book.title}</h2>
-          <p className={style.author}>{book.author}</p>
+        <Image
+          src={
+            book.volumeInfo.imageLinks?.smallThumbnail ||
+            book.volumeInfo.imageLinks?.thumbnail
+          }
+          alt={book.volumeInfo.title}
+          width={102}
+          height={145}
+        />
+        <div className={style.item} style={{ width: "150px" }}>
+          <h2 className={style.title}>{book.volumeInfo.title}</h2>
+          <p className={style.author}>{book.volumeInfo.authors}</p>
           <div className={style.review}>
             <Image src="/icons/star.svg" alt="star" width={12} height={12} />
             <Image src="/icons/star.svg" alt="star" width={12} height={12} />
             <Image src="/icons/star.svg" alt="star" width={12} height={12} />
             <Image src="/icons/star.svg" alt="star" width={12} height={12} />
             <Image src="/icons/star.svg" alt="star" width={12} height={12} />
-            <p>{book.reviews} reviews</p>
+            <p>
+              {" "}
+              {book.ratingCount && book.ratingCount.rating
+                ? book.ratingCount.rating
+                : ""}{" "}
+              reviews
+            </p>
           </div>
         </div>
       </td>
@@ -66,7 +80,13 @@ export default function Item({ book }) {
         </button>
       </td>
       <td>
-        <p className={style.price}>${book.price * book.count}</p>
+        <p className={style.price}>
+          {" "}
+          {book.saleInfo && book.saleInfo.retailPrice
+            ? book.saleInfo.retailPrice.amount * book.count +
+              book.saleInfo.retailPrice.currencyCode
+            : "none"}
+        </p>
       </td>
       <td>
         <p className={style.delivery}>Shipping: delivery </p>

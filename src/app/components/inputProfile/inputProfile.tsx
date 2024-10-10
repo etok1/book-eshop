@@ -11,7 +11,7 @@ export default function InputProfile() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit: React.ChangeEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const fakeToken = "fake-jwt-token";
     dispatch(login(fakeToken));

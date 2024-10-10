@@ -10,8 +10,7 @@ export default function BookList() {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.filters.filter);
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState();
 
   const categoryArray = [
     "Architecture",
@@ -37,18 +36,12 @@ export default function BookList() {
   };
 
   useEffect(() => {
+    const apiKey = "AIzaSyBr9B3Uw7C3Fi4NVVrg2ypGn2YRo7JewKU";
     const fetchDataBooks = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`/api/books?subject=${filter}&page=1`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch books");
-        }
-        const data = await response.json();
-        setBooks(data.items);
-      } catch (err) {
-        setError(err.message);
-      }
+      const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=Subject:${filter}&key=${apiKey}`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      setBooks(data.items || []);
       setLoading(false);
     };
 
@@ -76,9 +69,8 @@ export default function BookList() {
       </div>
       <div className="main__books-options">
         {loading && <p>Loading books...</p>}
-        {error && <p>Error: {error}</p>}
+
         {!loading &&
-          !error &&
           books.length > 0 &&
           books.map((book) => <Card key={book.id} book={book} />)}
       </div>

@@ -32,7 +32,7 @@ export default function Profile() {
             <input type="text" value="John" />
             <label htmlFor="#">YOUR NAME</label>
             <input type="text" value="example" />
-            <button className="button">EDIT PROFILE</button>
+            <button className="buttons">EDIT PROFILE</button>
           </form>
         </div>
         <div className={style.about}>

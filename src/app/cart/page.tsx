@@ -1,12 +1,18 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Item from "../components/itemInCart/itemInCart";
 import style from "./style.module.css";
 import { cartItems } from "@/slices/cartSlice";
 import { useSelector } from "react-redux";
+import { selectToken } from "@/slices/authSlice";
 
 export default function Cart() {
   const cart = useSelector(cartItems);
+  const token = useSelector(selectToken);
+
+  if (!token) {
+    return <p>You are not signed up!</p>;
+  }
 
   return (
     <div className={style.container}>

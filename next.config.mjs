@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const patterns = [{ protocol: "http", hostname: "books.google.com" }];
+
 const nextConfig = {
   webpack(config) {
     config.module.rules.push({
@@ -7,6 +9,10 @@ const nextConfig = {
     });
 
     return config;
+  },
+
+  images: {
+    remotePatterns: patterns,
   },
 };
 
