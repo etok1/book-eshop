@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Item from "../components/itemInCart/itemInCart";
 import style from "./style.module.css";
 import { cartItems } from "@/slices/cartSlice";
@@ -14,13 +14,30 @@ export default function Cart() {
     return <p>You are not signed up!</p>;
   }
 
+  const totalAmount = cart.reduce((total, item) => {
+    if (
+      item.saleInfo &&
+      item.saleInfo.retailPrice &&
+      item.saleInfo.retailPrice.amount
+    ) {
+      return total + item.saleInfo.retailPrice.amount.toFixed(2) * item.count;
+    }
+    return total;
+  }, 0);
+
   return (
     <div className={style.container}>
       <h2 className={style.heading}>SHOPPING CART</h2>
       <table className={style.table}>
         <thead>
           <tr>
-            <th>ITEM</th>
+            <th
+              style={{
+                width: "450px",
+              }}
+            >
+              ITEM
+            </th>
             <th>QUANTITY</th>
             <th>PRICE</th>
             <th>DELIVERY</th>
@@ -34,6 +51,11 @@ export default function Cart() {
           )}
         </tbody>
       </table>
+      <div className={style.checkoutWrapper}>
+        {" "}
+        <p>Total Amount: {totalAmount}</p>
+        <button className={`buttons ${style.checkout}`}>CHECKOUT</button>
+      </div>
     </div>
   );
 }

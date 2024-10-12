@@ -10,7 +10,7 @@ export default function BookList() {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.filters.filter);
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState<boolean>();
 
   const categoryArray = [
     "Architecture",

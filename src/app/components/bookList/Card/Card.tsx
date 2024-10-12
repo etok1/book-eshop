@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from "react";
 import "../style.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import { selectToken } from "@/slices/authSlice";
 import { addItem, cartItems, removeItem } from "@/slices/cartSlice";
 import { BookItem } from "@/types/book";
 
@@ -9,6 +11,10 @@ interface Book {
 }
 
 export default function Card({ book }: Book) {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const token = useSelector(selectToken);
+
   const cart = useSelector(cartItems);
   const dispatch = useDispatch();
   const itemInCart = cart.find((item) => item.id === book.id);
@@ -20,6 +26,13 @@ export default function Card({ book }: Book) {
       dispatch(addItem(book));
     }
   };
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [token]);
 
   return (
     <div className="main__books-option">
@@ -55,13 +68,14 @@ export default function Card({ book }: Book) {
         <p className="main__books-price">
           {" "}
           {book.saleInfo && book.saleInfo.retailPrice
-            ? book.saleInfo.retailPrice.amount +
+            ? book.saleInfo.retailPrice.amount.toFixed(2) +
               book.saleInfo.retailPrice.currencyCode
             : ""}
         </p>
         <button
           className={`buttons ${itemInCart ? "clicked" : ""}`}
           onClick={handleACtionCart}
+          disabled={!isLoggedIn}
         >
           {itemInCart ? "in the cart" : "buy now"}
         </button>

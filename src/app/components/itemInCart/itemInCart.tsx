@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import style from "./style.module.css";
 import { useDispatch } from "react-redux";
@@ -17,7 +16,13 @@ export default function Item({ book }) {
 
   return (
     <tr>
-      <td style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+      <td
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "20px",
+        }}
+      >
         <Image
           src={
             book.volumeInfo.imageLinks?.smallThumbnail ||
@@ -27,7 +32,7 @@ export default function Item({ book }) {
           width={102}
           height={145}
         />
-        <div className={style.item} style={{ width: "150px" }}>
+        <div className={style.item} style={{ width: "300px" }}>
           <h2 className={style.title}>{book.volumeInfo.title}</h2>
           <p className={style.author}>{book.volumeInfo.authors}</p>
           <div className={style.review}>
@@ -83,7 +88,7 @@ export default function Item({ book }) {
         <p className={style.price}>
           {" "}
           {book.saleInfo && book.saleInfo.retailPrice
-            ? book.saleInfo.retailPrice.amount * book.count +
+            ? (book.saleInfo.retailPrice.amount * book.count).toFixed(2) +
               book.saleInfo.retailPrice.currencyCode
             : "none"}
         </p>
