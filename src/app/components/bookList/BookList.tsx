@@ -5,10 +5,17 @@ import Card from "./Card/Card";
 import "./style.css";
 import { setFilter } from "@/slices/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { BookItem } from "@/types/book";
+
+interface RootState {
+  filters: {
+    filter: string;
+  };
+}
 
 export default function BookList() {
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filters.filter);
+  const filter = useSelector((state: RootState) => state.filters.filter);
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState<boolean>();
 
@@ -31,7 +38,7 @@ export default function BookList() {
     "Travel & Maps",
   ];
 
-  const handleGenreClick = (category) => {
+  const handleGenreClick = (category: string) => {
     dispatch(setFilter(category));
   };
 
@@ -72,7 +79,7 @@ export default function BookList() {
 
         {!loading &&
           books.length > 0 &&
-          books.map((book) => <Card key={book.id} book={book} />)}
+          books.map((book: BookItem) => <Card key={book.id} book={book} />)}
       </div>
     </div>
   );
