@@ -14,7 +14,7 @@ export default function Cart() {
     return <p>You are not signed up!</p>;
   }
 
-  const totalAmount = cart.reduce((total, item) => {
+  const totalAmount = cart.reduce((total: number, item) => {
     if (
       item.saleInfo &&
       item.saleInfo.retailPrice &&
