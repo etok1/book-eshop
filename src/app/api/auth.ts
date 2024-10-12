@@ -15,7 +15,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.status !== "POST") {
+  if (req.method !== "POST") {
     res.status(405).send({ error: true, message: "Only POST" });
   }
 
@@ -23,7 +23,7 @@ export default async function handler(
 
   const validatedInfo = validate(email, password);
 
-  if (validatedInfo.error) {
+  if (!validatedInfo) {
     res
       .status(400)
       .send({ error: true, message: "Email or password are incorrect" });
