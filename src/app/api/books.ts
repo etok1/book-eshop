@@ -19,7 +19,9 @@ export default async function handler(
   gbooksReqParams.set("q", `Subject:${subject}`);
   gbooksReqParams.set("startIndex", `${(parseInt(page as string) - 1) * 10}`);
   gbooksReqParams.set("maxResults", "6");
-  gbooksReqParams.set("key", apiKey);
+  if (apiKey) {
+    gbooksReqParams.set("key", apiKey);
+  }
 
   try {
     const response = await fetch(
