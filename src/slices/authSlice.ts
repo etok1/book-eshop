@@ -7,6 +7,14 @@ const initialState = {
   token: tokenFromStorage || null,
 };
 
+interface AuthState {
+  token: string | null;
+}
+
+interface RootState {
+  auth: AuthState;
+}
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -19,6 +27,6 @@ const authSlice = createSlice({
 });
 
 export const { login } = authSlice.actions;
-export const selectToken = (state) => state.auth.token;
+export const selectToken = (state: RootState) => state.auth.token;
 
 export default authSlice.reducer;

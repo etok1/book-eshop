@@ -31,4 +31,5 @@ export interface BookItem {
   saleInfo: SaleInfo;
   searchInfo?: SearchInfo;
   ratingCount?: Rating;
+  count?: number;
 }

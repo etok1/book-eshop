@@ -2,8 +2,13 @@ import Image from "next/image";
 import style from "./style.module.css";
 import { useDispatch } from "react-redux";
 import { increaseCount, decreaseCount } from "@/slices/cartSlice";
+import { BookItem } from "@/types/book";
 
-export default function Item({ book }) {
+interface book {
+  book: BookItem;
+}
+
+export default function Item({ book }: book) {
   const dispatch = useDispatch();
 
   const handleIncreasingCount = () => {
@@ -87,7 +92,7 @@ export default function Item({ book }) {
       <td>
         <p className={style.price}>
           {" "}
-          {book.saleInfo && book.saleInfo.retailPrice
+          {book.saleInfo && book.saleInfo.retailPrice && book.count
             ? (book.saleInfo.retailPrice.amount * book.count).toFixed(2) +
               book.saleInfo.retailPrice.currencyCode
             : "none"}
